@@ -1,0 +1,32 @@
+modLoader = "javafml"
+loaderVersion = "[40,)"
+license = "MIT"
+
+issueTrackerURL="https://github.com/invalid/pleasechangeme/issues"
+
+[[mods]]
+modId = "smoothboot"
+version = "${version}"
+displayName = "Smooth Boot 1.18.2+"
+# updateJSONURL="https://changeme.dev/updates.json"
+# displayURL="https://changeme.dev/"
+logoFile="icon.png"
+credits="UltimateBoomer"
+authors="AbdElAziz333"
+description = '''
+Improve and tweak Minecraft CPU scheduling.
+'''
+
+[[dependencies.smoothboot]]
+modId = "forge"
+mandatory = true
+versionRange = "[40,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.smoothboot]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18.2,)"
+ordering = "NONE"
+side = "BOTH"
