@@ -2,14 +2,14 @@ modLoader = "javafml"
 loaderVersion = "[40,)"
 license = "MIT"
 
-issueTrackerURL="https://github.com/invalid/pleasechangeme/issues"
+issueTrackerURL="https://github.com/AbdElAziz333/Smooth-Boot-Reloaded/issues"
 
 [[mods]]
 modId = "smoothboot"
 version = "${version}"
-displayName = "Smooth Boot 1.18.2+"
-# updateJSONURL="https://changeme.dev/updates.json"
-# displayURL="https://changeme.dev/"
+displayName = "Smooth Boot (Reloaded)"
+# updateJSONURL="https://changeme.dev/updates.js
+displayURL="https://www.curseforge.com/minecraft/mc-mods/smooth-boot-reloaded"
 logoFile="icon.png"
 credits="UltimateBoomer"
 authors="AbdElAziz333"
