@@ -33,6 +33,7 @@ dependencies {
 
 processResources {
     inputs.property "version", project.version
+
     filesMatching("META-INF/mods.toml") {
         expand "version": project.version
     }
@@ -42,10 +43,6 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
     options.release = 17
 }
-
-//java {
-    //withSourcesJar()
-//}
 
 jar {
     manifest {
@@ -67,9 +64,6 @@ publishing {
             artifact(remapJar) {
                 builtBy remapJar
             }
-            //artifact(sourcesJar) {
-            //    builtBy remapSourcesJar
-            //}
         }
     }
 

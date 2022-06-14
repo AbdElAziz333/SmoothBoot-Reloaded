@@ -11,7 +11,7 @@ import java.io.IOException;
 @Mod(SmoothBoot.MOD_ID)
 public class SmoothBoot {
 	public static final String MOD_ID = "smoothboot";
-	public static final String NAME = "Smooth Boot";
+	public static final String NAME = "Smooth Boot (Reloaded)";
 	
 	public static final Logger LOGGER = LogManager.getLogger(NAME);
 	
