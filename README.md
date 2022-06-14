@@ -4,9 +4,9 @@ Smooth Boot (Reloaded) is updated version of Smooth Boot for modern versions of 
 
 # Features
 
-Change # of threads used by Minecraft executors.
-Change the thread priority of each thread.
-Everything is configurable in the mod config.
+Change # of threads used by Minecraft executors.        
+Change the thread priority of each thread.                   
+Everything is configurable in the mod config.        
 
 # Extra Info
 
