@@ -1,0 +1,18 @@
+{
+  "mappings": {
+    "com/abdelaziz/smoothboot/mixin/UtilMixin": {
+      "getMainWorkerExecutor": "Lnet/minecraft/Util;m_183991_()Ljava/util/concurrent/ExecutorService;",
+      "getIoWorkerExecutor": "Lnet/minecraft/Util;m_183992_()Ljava/util/concurrent/ExecutorService;",
+      "getBootstrapExecutor": "Lnet/minecraft/Util;m_183988_()Ljava/util/concurrent/ExecutorService;"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "com/abdelaziz/smoothboot/mixin/UtilMixin": {
+        "getMainWorkerExecutor": "Lnet/minecraft/Util;m_183991_()Ljava/util/concurrent/ExecutorService;",
+        "getIoWorkerExecutor": "Lnet/minecraft/Util;m_183992_()Ljava/util/concurrent/ExecutorService;",
+        "getBootstrapExecutor": "Lnet/minecraft/Util;m_183988_()Ljava/util/concurrent/ExecutorService;"
+      }
+    }
+  }
+}
