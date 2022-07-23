@@ -1,6 +1,6 @@
-package io.github.ultimateboomer.smoothboot.mixin.client;
+package com.abdelaziz.smoothboot.mixin.client;
 
-import io.github.ultimateboomer.smoothboot.SmoothBoot;
+import com.abdelaziz.smoothboot.SmoothBoot;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

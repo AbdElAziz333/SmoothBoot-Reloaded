@@ -1,9 +1,9 @@
-package io.github.ultimateboomer.smoothboot.config;
+package com.abdelaziz.smoothboot.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
-import io.github.ultimateboomer.smoothboot.SmoothBoot;
+import com.abdelaziz.smoothboot.SmoothBoot;
 import net.minecraft.util.Util;
 
 import java.io.File;
