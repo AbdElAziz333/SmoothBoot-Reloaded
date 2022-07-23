@@ -11,8 +11,8 @@ displayName = "Smooth Boot (Reloaded)"
 # updateJSONURL="https://changeme.dev/updates.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/smooth-boot-reloaded"
 logoFile="icon.png"
-credits="UltimateBoomer"
-authors="AbdElAziz333"
+credits = "UltimateBoomer"
+authors = "AbdElAziz"
 description = '''
 Improve and tweak Minecraft CPU scheduling.
 '''
