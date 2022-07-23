@@ -1,0 +1,32 @@
+modLoader = "javafml"
+loaderVersion = "[41,)"
+license = "MIT"
+
+issueTrackerURL="https://github.com/AbdElAziz333/Smooth-Boot-Reloaded/issues"
+
+[[mods]]
+modId = "smoothboot"
+version = "1.0.2"
+displayName = "Smooth Boot (Reloaded)"
+# updateJSONURL="https://changeme.dev/updates.json"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/smooth-boot-reloaded"
+logoFile="icon.png"
+credits = "UltimateBoomer"
+authors = "AbdElAziz"
+description = '''
+Improve and tweak Minecraft CPU scheduling.
+'''
+
+[[dependencies.smoothboot]]
+modId = "forge"
+mandatory = true
+versionRange = "[41,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.smoothboot]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19,)"
+ordering = "NONE"
+side = "BOTH"

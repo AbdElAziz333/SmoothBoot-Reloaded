@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Specification-Title: smoothboot
+Specification-Vendor: AbdElAziz
+Specification-Version: 1
+Implementation-Title: SmoothBoot(Reloaded)
+Implementation-Version: 1.0.2
+Implementation-Vendor: AbdElAziz
+Implementation-Timestamp: 2022-07-23T04:38:05+0200
+MixinConfigs: smoothboot.mixins.json
+
