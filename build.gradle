@@ -18,7 +18,7 @@ group = 'com.abdelaziz.smoothboot'
 version = '1.0.5'
 
 java {
-    archivesBaseName = 'smoothboot(reloaded-mc1.19.2'
+    archivesBaseName = 'smoothboot(reloaded)-mc1.19.2'
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
