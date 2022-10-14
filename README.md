@@ -7,8 +7,6 @@
 ![Curseforge Downloads](https://cf.way2muchnoise.eu/633412.svg)
 [![This is a Fork](https://img.shields.io/badge/This%20is%20port-Support%20the%20original-orange)](https://github.com/UltimateBoomer/mc-smoothboot)
 
-# Smooth Boot (Reloaded)
-
 Smooth Boot (Reloaded) is a optimization mod and unofficial fork of [Smooth Boot](https://github.com/UltimateBoomer/mc-smoothboot) for Minecraft Forge 1.18.2+, If you have a PC with a older or lower end CPU (ex. CPUs with 8 or less threads), you may have noticed that Minecraft takes up 100% of the CPU when loading into the title screen, causing cursor stutter and makes multitasking painfully difficult. Smooth Boot solves this problem completely, and loading should be much smoother and potentially faster as well.
 
 # Features
