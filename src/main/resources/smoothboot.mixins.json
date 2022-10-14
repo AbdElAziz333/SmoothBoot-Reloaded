@@ -1,19 +1,21 @@
 {
   "required": true,
-  "minVersion": "0.8",
+  "minVersion": "0.8.2",
   "package": "com.abdelaziz.smoothboot.mixin",
   "compatibilityLevel": "JAVA_17",
+  "refmap": "smoothboot.refmap.json",
+  "injectors": {
+    "defaultRequire": 1
+  },
   "mixins": [
+    "ModWorkManagerMixin",
     "UtilMixin"
   ],
   "client": [
-    "client.MainMixin",
-    "client.IntegratedServerMixin"
+    "client.IntegratedServerMixin",
+    "client.MainMixin"
   ],
   "server": [
     "server.MainMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
+  ]
 }
