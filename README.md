@@ -13,7 +13,7 @@ Smooth Boot (Reloaded) is a optimization mod and unofficial fork of [Smooth Boot
 
 Change # of threads used by Minecraft executors.               
 Change the thread priority of each thread.              
-Everything is configurable in the mod config.
+Everything is configurable in the mod config, For more information, please read the [Smooth Boot (Reloaded) Wiki](https://github.com/AbdElAziz333/Canary/wiki/Configuration-File).
 
 ### License
 
