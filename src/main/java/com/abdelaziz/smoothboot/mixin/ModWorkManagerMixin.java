@@ -13,7 +13,7 @@ import net.minecraftforge.fml.ModWorkManager;
 @Mixin(ModWorkManager.class)
 public class ModWorkManagerMixin {
     @Overwrite(remap = false)
-    public static ForkJoinWorkerThread newForkJoinWorkerThread(ForkJoinPool pool) {
+    private static ForkJoinWorkerThread newForkJoinWorkerThread(ForkJoinPool pool) {
         ForkJoinWorkerThread thread = ForkJoinPool.defaultForkJoinWorkerThreadFactory.newThread(pool);
         String workerName = "modloading-worker-" + thread.getPoolIndex();
         SmoothBoot.LOGGER.debug("Initialized " + workerName);

@@ -7,7 +7,7 @@ import com.abdelaziz.smoothboot.util.LoggingForkJoinWorkerThread;
 import com.google.common.base.Objects;
 import net.minecraft.Util;
 import net.minecraft.util.Mth;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,17 +19,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Mixin(Util.class)
 public abstract class UtilMixin {
+	private static boolean initBootstrapExecutor = false;
+	private static boolean initMainWorkerExecutor = false;
 	@Shadow
 	@Final
 	static Logger LOGGER;
-	private static boolean initBootstrapExecutor = false;
-	private static boolean initMainWorkerExecutor = false;
-
+	private static boolean initIoWorker = false;
 	@Shadow
 	@Final
 	@Mutable
 	private static ExecutorService BOOTSTRAP_EXECUTOR;
-	private static boolean initIoWorker = false;
 	@Shadow
 	@Final
 	@Mutable
@@ -45,8 +44,6 @@ public abstract class UtilMixin {
 	@Shadow
 	private static void onThreadException(Thread thread, Throwable throwable) {
 	}
-
-	;
 
 	// Probably not ideal, but this is the only way I found to modify createWorker without causing errors.
 	// Redirecting or overwriting causes static initialization to be called too early resulting in NullPointerException being thrown.
