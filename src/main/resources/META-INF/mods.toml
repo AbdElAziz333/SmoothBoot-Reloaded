@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
+loaderVersion = "[40,)"
 license = "MIT"
 
 issueTrackerURL="https://github.com/AbdElAziz333/Smooth-Boot-Reloaded/issues"
@@ -8,7 +8,7 @@ issueTrackerURL="https://github.com/AbdElAziz333/Smooth-Boot-Reloaded/issues"
 modId = "smoothboot"
 version = "${file.jarVersion}"
 displayName = "Smooth Boot (Reloaded)"
-updateJSONURL = "https://github.com/AbdElAziz333/SmoothBoot-Reloaded/blob/v1.19.2/dev/updates.json"
+updateJSONURL = "https://github.com/AbdElAziz333/SmoothBoot-Reloaded/blob/mc1.18.2/dev/updates.json"
 displayURL = "https://www.curseforge.com/minecraft/mc-mods/smooth-boot-reloaded"
 logoFile = "logo.png"
 credits = "AbdElAziz, UltimateBoomer"
@@ -21,13 +21,13 @@ displayTest = "MATCH_VERSION"
 [[dependencies.smoothboot]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange = "[40,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.smoothboot]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.2,1.20)"
+versionRange = "[1.18.2,1.19)"
 ordering = "NONE"
 side = "BOTH"
