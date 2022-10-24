@@ -14,16 +14,16 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
-group = 'com.abdelaziz.smoothboot'
-version = '0.0.1'
+group = project.maven_group
+version = project.mod_version
 
 java {
-    archivesBaseName = 'smoothboot(reloaded)-mc1.19.2'
+    archivesBaseName = project.archives_base_name
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
 minecraft {
-    mappings channel: 'official', version: '1.19.2'
+    mappings channel: 'official', version: project.minecraft_version
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -73,7 +73,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {}
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.1.39'
+    minecraft "net.minecraftforge:forge:${project.forge_version}"
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
@@ -93,12 +93,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "smoothboot",
-                "Specification-Vendor"    : "AbdElAziz",
+                "Specification-Title"     : project.mod_id,
+                "Specification-Vendor"    : project.mod_author,
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "AbdElAziz",
+                "Implementation-Vendor"   : project.mod_author,
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
