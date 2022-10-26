@@ -1,6 +1,0 @@
-v1	named	intermediary
-FIELD	io/github/ultimateboomer/smoothboot/mixin/UtilMixin	Ljava/util/concurrent/ExecutorService;	BOOTSTRAP_EXECUTOR	f_137443_
-FIELD	io/github/ultimateboomer/smoothboot/mixin/UtilMixin	Ljava/util/concurrent/ExecutorService;	MAIN_WORKER_EXECUTOR	f_137444_
-FIELD	io/github/ultimateboomer/smoothboot/mixin/UtilMixin	Ljava/util/concurrent/ExecutorService;	IO_WORKER_EXECUTOR	f_137445_
-FIELD	io/github/ultimateboomer/smoothboot/mixin/UtilMixin	Ljava/util/concurrent/atomic/AtomicInteger;	NEXT_WORKER_ID	f_137442_
-METHOD	io/github/ultimateboomer/smoothboot/mixin/UtilMixin	(Ljava/lang/Thread;Ljava/lang/Throwable;)V	uncaughtExceptionHandler	m_137495_
