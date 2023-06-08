@@ -3,12 +3,10 @@ package com.abdelaziz.smoothboot.config;
 import net.minecraft.util.Mth;
 
 public class SmoothBootConfig {
-	private int bootstrapThreads = 1;
 	private int mainThreads = Math.max(Runtime.getRuntime().availableProcessors() / 2, 1);
 
 	private int gamePriority = 5;
 	private int integratedServerPriority = 5;
-	private int bootstrapPriority = 1;
 	private int mainPriority = 1;
 	private int ioPriority = 1;
 	private int modLoadingPriority = 1;
@@ -17,23 +15,13 @@ public class SmoothBootConfig {
 	 * Make sure the config values are within range
 	 */
 	public void validate() {
-		bootstrapThreads = Math.max(bootstrapPriority, 1);
 		mainThreads = Math.max(mainThreads, 1);
 
 		gamePriority = Mth.clamp(gamePriority, 1, 10);
 		integratedServerPriority = Mth.clamp(integratedServerPriority, 1, 10);
-		bootstrapPriority = Mth.clamp(bootstrapPriority, 1, 10);
 		mainPriority = Mth.clamp(mainPriority, 1, 10);
 		ioPriority = Mth.clamp(ioPriority, 1, 10);
 		modLoadingPriority = Mth.clamp(modLoadingPriority, 1, 10);
-	}
-
-	public int getBootstrapThreads() {
-		return bootstrapThreads;
-	}
-
-	public void setBootstrapThreads(int bootstrapThreads) {
-		this.bootstrapThreads = bootstrapThreads;
 	}
 
 	public int getMainThreads() {
@@ -58,14 +46,6 @@ public class SmoothBootConfig {
 
 	public void setIntegratedServerPriority(int integratedServerPriority) {
 		this.integratedServerPriority = integratedServerPriority;
-	}
-
-	public int getBootstrapPriority() {
-		return bootstrapPriority;
-	}
-
-	public void setBootstrapPriority(int bootstrapPriority) {
-		this.bootstrapPriority = bootstrapPriority;
 	}
 
 	public int getMainPriority() {

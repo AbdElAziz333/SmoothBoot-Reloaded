@@ -19,16 +19,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Mixin(Util.class)
 public abstract class UtilMixin {
-	private static boolean initBootstrapExecutor = false;
 	private static boolean initMainWorkerExecutor = false;
 	@Shadow
 	@Final
 	static Logger LOGGER;
 	private static boolean initIoWorker = false;
-	@Shadow
-	@Final
-	@Mutable
-	private static ExecutorService BOOTSTRAP_EXECUTOR;
 	@Shadow
 	@Final
 	@Mutable
@@ -48,19 +43,10 @@ public abstract class UtilMixin {
 	// Probably not ideal, but this is the only way I found to modify createWorker without causing errors.
 	// Redirecting or overwriting causes static initialization to be called too early resulting in NullPointerException being thrown.
 
-	@Inject(method = "bootstrapExecutor", at = @At("HEAD"))
-	private static void onGetBootstrapExecutor(CallbackInfoReturnable<Executor> ci) {
-		if (!initBootstrapExecutor) {
-			BOOTSTRAP_EXECUTOR = replWorker("Bootstrap");
-			initBootstrapExecutor = true;
-			SmoothBoot.LOGGER.debug("Replaced Bootstrap Executor");
-		}
-	}
-
 	@Inject(method = "backgroundExecutor", at = @At("HEAD"))
 	private static void onGetMainWorkerExecutor(CallbackInfoReturnable<Executor> ci) {
 		if (!initMainWorkerExecutor) {
-			BACKGROUND_EXECUTOR = replWorker("Main");
+			BACKGROUND_EXECUTOR = replMainWorker();
 			initMainWorkerExecutor = true;
 			SmoothBoot.LOGGER.debug("Replaced Main Executor");
 		}
@@ -76,7 +62,7 @@ public abstract class UtilMixin {
 	}
 
 	// Replace createNamedService
-	private static ExecutorService replWorker(String name) {
+	private static ExecutorService replMainWorker() {
 		if (SmoothBootConfigHandler.config == null) {
 			try {
 				SmoothBootConfigHandler.readConfig();
@@ -86,14 +72,13 @@ public abstract class UtilMixin {
 		}
 
 		SmoothBootConfig config = SmoothBootConfigHandler.config;
-		ExecutorService executorService2 = new ForkJoinPool(Mth.clamp(select(name, config.getBootstrapThreads(),
-				config.getMainThreads()), 1, 0x7fff), (forkJoinPool) -> {
-			String workerName = "Worker-" + name + WORKER_COUNT.getAndIncrement();
+		ExecutorService executorService2 = new ForkJoinPool(Mth.clamp(config.getMainThreads(), 1, 0x7fff), (forkJoinPool) -> {
+			String workerName = "Worker-Main-" + WORKER_COUNT.getAndIncrement();
 			SmoothBoot.LOGGER.debug("Initialized " + workerName);
 
 			ForkJoinWorkerThread forkJoinWorkerThread = new LoggingForkJoinWorkerThread(forkJoinPool, LOGGER);
-			forkJoinWorkerThread.setPriority(select(name, config.getBootstrapPriority(), config.getMainPriority()));
 			forkJoinWorkerThread.setName(workerName);
+			forkJoinWorkerThread.setPriority(config.getMainPriority());
 			return forkJoinWorkerThread;
 		}, UtilMixin::onThreadException, true);
 		return executorService2;
@@ -110,9 +95,5 @@ public abstract class UtilMixin {
 			thread.setUncaughtExceptionHandler(UtilMixin::onThreadException);
 			return thread;
 		});
-	}
-
-	private static <T> T select(String name, T bootstrap, T main) {
-		return Objects.equal(name, "Bootstrap") ? bootstrap : main;
 	}
 }
