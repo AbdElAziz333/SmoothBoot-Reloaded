@@ -19,42 +19,29 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Mixin(Util.class)
 public abstract class UtilMixin {
-	private static boolean initBootstrapExecutor = false;
 	private static boolean initMainWorkerExecutor = false;
+
 	@Shadow
 	@Final
 	static Logger LOGGER;
 	private static boolean initIoWorker = false;
-	@Shadow
-	@Final
-	@Mutable
-	private static ExecutorService BOOTSTRAP_EXECUTOR;
+
 	@Shadow
 	@Final
 	@Mutable
 	private static ExecutorService BACKGROUND_EXECUTOR;
+
 	@Shadow
 	@Final
 	@Mutable
 	private static ExecutorService IO_POOL;
+
 	@Shadow
 	@Final
 	private static AtomicInteger WORKER_COUNT;
 
 	@Shadow
 	private static void onThreadException(Thread thread, Throwable throwable) {
-	}
-
-	// Probably not ideal, but this is the only way I found to modify createWorker without causing errors.
-	// Redirecting or overwriting causes static initialization to be called too early resulting in NullPointerException being thrown.
-
-	@Inject(method = "bootstrapExecutor", at = @At("HEAD"))
-	private static void onGetBootstrapExecutor(CallbackInfoReturnable<Executor> ci) {
-		if (!initBootstrapExecutor) {
-			BOOTSTRAP_EXECUTOR = replWorker("Bootstrap");
-			initBootstrapExecutor = true;
-			SmoothBoot.LOGGER.debug("Replaced Bootstrap Executor");
-		}
 	}
 
 	@Inject(method = "backgroundExecutor", at = @At("HEAD"))
