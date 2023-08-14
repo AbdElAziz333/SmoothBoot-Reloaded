@@ -11,8 +11,7 @@ buildscript {
 plugins {
     id 'eclipse'
     id 'idea'
-    id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
 apply plugin: 'org.spongepowered.mixin'
@@ -21,7 +20,7 @@ version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = mod_id + "-mc" + minecraft_version
+    archivesName = mod_id + "(reloaded)-mc" + minecraft_version
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -90,7 +89,7 @@ tasks.named('processResources', ProcessResources).configure {
     ]
     inputs.properties replaceProperties
 
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+    filesMatching(['META-INF/mods.toml']) {
         expand replaceProperties + [project: project]
     }
 }
@@ -108,19 +107,6 @@ tasks.named('jar', Jar).configure {
         ])
     }
     finalizedBy 'reobfJar'
-}
-
-publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
 }
 
 tasks.withType(JavaCompile).configureEach {
