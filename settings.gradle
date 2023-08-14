@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'SmoothBoot-Reloaded'
+rootProject.name = "${mod_name}"
