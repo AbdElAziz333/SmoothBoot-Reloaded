@@ -12,7 +12,7 @@ logoFile = "logo.png"
 credits = "${credits}"
 authors = "${mod_authors}"
 displayTest="MATCH_VERSION"
-description = '''${mod_describtion}'''
+description = '''${mod_description}'''
 
 [[dependencies.${mod_id}]]
 modId = "forge"
