@@ -1,94 +1,35 @@
 package com.abdelaziz.smoothboot.config;
 
+import com.abdelaziz.smoothboot.SmoothBoot;
 import net.minecraft.util.Mth;
 
 public class SmoothBootConfig {
-	private int bootstrapThreads = 1;
-	private int mainThreads = Math.max(Runtime.getRuntime().availableProcessors() / 2, 1);
+	public ThreadCount threadCount = new ThreadCount();
+	public ThreadPriority threadPriority = new ThreadPriority();
 
-	private int gamePriority = 5;
-	private int integratedServerPriority = 5;
-	private int bootstrapPriority = 1;
-	private int mainPriority = 1;
-	private int ioPriority = 1;
-	private int modLoadingPriority = 1;
+	public static class ThreadCount {
+		public int bootstrap = 1;
+		public int main = Mth.clamp(Runtime.getRuntime().availableProcessors() - 1, 1, SmoothBoot.getMaxBackgroundThreads());
+	}
 
-	/**
-	 * Make sure the config values are within range
-	 */
+	public static class ThreadPriority {
+		public int game = 5;
+		public int bootstrap = 1;
+		public int main = 1;
+		public int io = 1;
+		public int integratedServer = 5;
+		public int modLoading = 1;
+	}
+
 	public void validate() {
-		bootstrapThreads = Math.max(bootstrapPriority, 1);
-		mainThreads = Math.max(mainThreads, 1);
+		threadCount.bootstrap = Math.max(threadCount.bootstrap, 1);
+		threadCount.main = Math.max(threadCount.main, 1);
 
-		gamePriority = Mth.clamp(gamePriority, 1, 10);
-		integratedServerPriority = Mth.clamp(integratedServerPriority, 1, 10);
-		bootstrapPriority = Mth.clamp(bootstrapPriority, 1, 10);
-		mainPriority = Mth.clamp(mainPriority, 1, 10);
-		ioPriority = Mth.clamp(ioPriority, 1, 10);
-		modLoadingPriority = Mth.clamp(modLoadingPriority, 1, 10);
-	}
-
-	public int getBootstrapThreads() {
-		return bootstrapThreads;
-	}
-
-	public void setBootstrapThreads(int bootstrapThreads) {
-		this.bootstrapThreads = bootstrapThreads;
-	}
-
-	public int getMainThreads() {
-		return mainThreads;
-	}
-
-	public void setMainThreads(int mainThreads) {
-		this.mainThreads = mainThreads;
-	}
-
-	public int getGamePriority() {
-		return gamePriority;
-	}
-
-	public void setGamePriority(int gamePriority) {
-		this.gamePriority = gamePriority;
-	}
-
-	public int getIntegratedServerPriority() {
-		return integratedServerPriority;
-	}
-
-	public void setIntegratedServerPriority(int integratedServerPriority) {
-		this.integratedServerPriority = integratedServerPriority;
-	}
-
-	public int getBootstrapPriority() {
-		return bootstrapPriority;
-	}
-
-	public void setBootstrapPriority(int bootstrapPriority) {
-		this.bootstrapPriority = bootstrapPriority;
-	}
-
-	public int getMainPriority() {
-		return mainPriority;
-	}
-
-	public void setMainPriority(int mainPriority) {
-		this.mainPriority = mainPriority;
-	}
-
-	public int getIoPriority() {
-		return ioPriority;
-	}
-
-	public void setIoPriority(int ioPriority) {
-		this.ioPriority = ioPriority;
-	}
-
-	public int getModLoadingPriority() {
-		return modLoadingPriority;
-	}
-
-	public void setModLoadingPriority(int modLoadingPriority) {
-		this.modLoadingPriority = modLoadingPriority;
+		threadPriority.game = Mth.clamp(threadPriority.game, 1, 10);
+		threadPriority.integratedServer = Mth.clamp(threadPriority.integratedServer, 1, 10);
+		threadPriority.bootstrap = Mth.clamp(threadPriority.bootstrap, 1, 10);
+		threadPriority.main = Mth.clamp(threadPriority.main, 1, 10);
+		threadPriority.io = Mth.clamp(threadPriority.io, 1, 10);
+		threadPriority.modLoading = Mth.clamp(threadPriority.modLoading, 1,10);
 	}
 }
